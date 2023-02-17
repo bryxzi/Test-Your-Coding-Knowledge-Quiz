@@ -7,7 +7,6 @@ This is a simple quiz application built with HTML, CSS, and JavaScript. The quiz
 ![Demo of application](assets/images/demo-sc.png)
 
 ## Links
-
 * Link to Github: https://github.com/bryxzi
 * Link to Repo: https://github.com/bryxzi/Test-Your-Coding-Knowledge-Quiz
 * Live Deployment: https://bryxzi.github.io/Test-Your-Coding-Knowledge-Quiz/
