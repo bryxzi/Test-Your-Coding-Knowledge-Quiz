@@ -19,6 +19,10 @@ body {
     cursor: pointer;
 }
 
+#highscores:hover {
+    cursor: pointer;
+}
+
 button {
     margin: 0px, 5px;
 }
@@ -36,7 +40,6 @@ header {
     display: flex;
     flex: wrap;
     justify-content: space-between;
-
 }
 
 #quiz-title {
@@ -45,17 +48,15 @@ header {
 }
 
 #start-quiz {
-   text-align: center;
+    text-align: center;
 }
 
 #quiz {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 100vh; */
     margin-top: 50px;
-  }
-
+}
 
 #instructions {
     width: 60%;
@@ -74,33 +75,34 @@ header {
 #quiz-card {
     width: 50%;
     margin: 0 auto;
-  }
-  
-  #progress {
-    font-weight: bolder;
-  }
+}
 
-  #question {
+#progress {
+    font-weight: bolder;
+}
+
+#question {
     margin: 10 auto;
     text-align: center;
-  }
+}
 
-  #end {
+#end {
     text-align: center;
     display: none;
-  }
+}
 
-  #hide {
+#hide {
     text-align: center;
     display: none;
-  }
-  #top5 {
+}
+
+#top5 {
     text-align: center;
-  }
+}
 
 #end p,
 #end input,
 #end button {
-  display: inline;
-  margin: 10px 2px;
+    display: inline;
+    margin: 10px 2px;
 }
