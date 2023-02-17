@@ -1,5 +1,4 @@
-
-var quiz = [
+const quiz = [
   {
     question: "What is the syntax for creating a while loop in JavaScript?",
     choices: [
@@ -113,13 +112,10 @@ const startQuizButton = document.querySelector("#start-quiz");
 const timer = document.querySelector("#timer");
 const enter = document.querySelector("#end");
 const submit = document.querySelector("#log-score");
-const unhide = document.querySelector("#hide");
 const showHigh = document.querySelector('#highscores');
 const clear = document.querySelector('#clear-scores');
 const back = document.querySelector('#back');
 const scores = document.querySelector('#top5');
-const savedInitials = localStorage.getItem('userInput');
-const savedScore = localStorage.getItem('userScore');
 const hide = document.querySelector("#hide");
 const newScore = document.createElement('li');
 
@@ -150,6 +146,7 @@ function countdown() {
   timeLimit--;
   if (timeLimit < 0) {
     clearInterval(intervalId);
+    timeLimit = 0;
     endQuiz();
   }
 }
@@ -161,7 +158,7 @@ function showQuestion() {
     endQuiz();
     return;
   }
-  var q = quiz[currentQuestion];
+  const q = quiz[currentQuestion];
   question.innerHTML = q.question;
   for (let i = 0; i < choices.length; i++) {
     choices[i].innerHTML = q.choices[i];
@@ -169,7 +166,6 @@ function showQuestion() {
   }
   showProgress();
 }
-
 
 function allListeners() {
   let choiceSelected = this.innerText;
@@ -184,9 +180,9 @@ function removeAllListeners() {
   }
 }
 
-function checkAnswer(a, b) {
-  console.log(a, b);
-  if (a === b) {
+function checkAnswer(userAnswer, correctAnswer) {
+  console.log(userAnswer, correctAnswer);
+  if (userAnswer === correctAnswer) {
     score++;
     currentQuestion++;
     console.log('score: ' + score);
@@ -195,20 +191,11 @@ function checkAnswer(a, b) {
   else {
     currentQuestion++;
     timeLimit = (timeLimit - 5);
+    if (timeLimit < 0)
+      timeLimit = 0
     showQuestion();
     countdown(timeLimit);
   }
-}
-
-function showProgress() {
-  progress.innerHTML = "Question " + (currentQuestion + 1) + " of " + quiz.length;
-}
-
-
-
-function clearScore() {
-  localStorage.clear();
-  scores.innerHTML = '';
 }
 
 function endQuiz() {
@@ -216,6 +203,7 @@ function endQuiz() {
   title.innerHTML = "All Done!";
   question.innerHTML = "You scored " + score + " out of " + quiz.length;
   enter.style.display = 'block';
+  submit.removeEventListener('click', saveInput)
   submit.addEventListener('click', saveInput);
   choicesButton.style.display = 'none';
   progress.style.display = "none";
@@ -224,7 +212,6 @@ function endQuiz() {
 function saveInput() {
   const inputElement = document.querySelector('input');
   const initials = inputElement.value;
-  const score = quiz.length - currentQuestion;
   let count = 0;
   while (localStorage.getItem('userInput' + count) && localStorage.getItem('userScore' + count)) {
     count++;
@@ -266,10 +253,17 @@ function showHighscores() {
     choices[i].style.display = "none";
   }
   progress.style.display = "none";
-
   clear.addEventListener('click', clearScore);
   back.addEventListener('click', function () {
     location.reload();
-})
+  })
+}
 
+function showProgress() {
+  progress.innerHTML = "Question " + (currentQuestion + 1) + " of " + quiz.length;
+}
+
+function clearScore() {
+  localStorage.clear();
+  scores.innerHTML = '';
 }
