@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="develop/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <p id="highscores">Highscores</p>
+    <p id="timer">Timer</p>
+  </header>
+  <section id="quiz">
+    <h2 id="quiz-title">Coding Quiz Challenge</h2>
+    <p id="instructions">Try to answer the following code related questions within the time limit. Keep in mind that
+      incorrect answers will penalize your scoretime by 10 seconds!</p>
+    <div id="quiz-card">
+      <h3 id="question"></h3>
+      <div id="choices">
+        <ul>
+          <li><button class="choice"></button></li>
+          <li><button class="choice"></button></li>
+          <li><button class="choice"></button></li>
+          <li><button class="choice"></button></li>
+        </ul>
+      </div>
+      <p id="progress"></p>
+    </div>
+    <button id="start-quiz">Start Quiz</button>
+
+  </section>
+  <div id="end">
+    <p>Enter Initials:</p>
+    <input>
+    <button id="log-score">Submit</button>
+  </div>
+  <div id="end-scores">
+    <ul id="top5">
+
+    </ul>
+    <div id="hide">
+      <button id="back">Go Back</button>
+      <button id="clear-scores">Clear Highscores</button>
+    </div>
+  </div>
+  <script src="develop/script.js"></script>
+</body>
+
+</html>
